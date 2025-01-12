@@ -1,0 +1,137 @@
+:root {
+    --sky: #1483f3;
+    --violet: #8b23e0;
+
+    --stick1: #109af0bd;
+    --stick2: #5d2cb88a;
+    --stick3: #ac1ddc;
+    --shadow: rgba(13, 154, 235, 0.787);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0229;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.button {
+    position: relative;
+    padding: 1rem 2.5rem;
+    background-size: 200%;
+    background-image: linear-gradient(to right, var(--sky), var(--violet));
+    background-position: left;
+    border: none;
+    color: #eeeeee;
+    font-size: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 1s;
+}
+
+.button:hover {
+    background-position: 90%;
+}
+
+.glow {
+    position: absolute;
+    box-shadow: 0 0 1rem 0.5rem var(--shadow);
+    transition: 1s;
+}
+
+.button:hover .glow {
+    box-shadow: 0 0 1rem 0.5rem var(--stick3);
+}
+
+.glow.top, .glow.bottom {
+    left: 0;
+    width: 100%;
+    height: 3px;
+}
+
+.glow.left, .glow.right {
+    top: 0;
+    width: 3px;
+    height: 100%;
+}
+
+.glow.top {
+    top: 0;
+    background-image: linear-gradient(to right, var(--stick1), var(--stick2));
+    animation: toRight 2s infinite;
+}
+
+.button:hover .glow.top {
+    background-image: linear-gradient(to right, var(--stick3), var(--stick2));
+}
+
+.glow.bottom {
+    bottom: 0;
+    /* transform: translateX(-150%); */
+    background-image: linear-gradient(to left, var(--stick1), var(--stick2));
+    animation: toRight 2s infinite reverse 0.25s;
+}
+
+.button:hover .glow.bottom {
+    background-image: linear-gradient(to right, var(--stick3), var(--stick2));
+}
+
+.glow.left {
+    left: 0;
+    /* transform: translateY(150%); */
+    background-image: linear-gradient(to top, var(--stick1), var(--stick2));
+    animation: toBottom 2s infinite reverse 0.75s;
+}
+
+.button:hover .glow.left {
+    background-image: linear-gradient(to right, var(--stick3), var(--stick2));
+}
+
+.glow.right {
+    right: 0;
+    /* transform: translateY(-150%); */
+    background-image: linear-gradient(to bottom, var(--stick1), var(--stick2));
+    animation: toBottom 2s infinite 0.5s;
+}
+
+.button:hover .glow.right {
+    background-image: linear-gradient(to right, var(--stick3), var(--stick2));
+}
+
+@keyframes toRight {
+    from {
+        transform: translateX(-150%);
+    } to {
+        transform: translateX(150%);
+    }
+}
+
+/* @keyframes toLeft {
+    from {
+        transform: translateX(150%);
+    } to {
+        transform: translateX(-150%);
+    }
+} */
+
+@keyframes toBottom {
+    from {
+        transform: translateY(-150%);
+    } to {
+        transform: translateY(150%);
+    }
+}
+
+/* @keyframes toTop {
+    from {
+        transform: translateY(-150%);
+    } to {
+        transform: translateY(150%);
+    }
+} */
